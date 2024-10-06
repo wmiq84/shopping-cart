@@ -1,19 +1,36 @@
-import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
-import Navbar from './components/Navbar'
-import { Outlet } from "react-router-dom";
+import { useState } from 'react';
+import Navbar from './components/Navbar';
+import Shop from './components/Shop';
+import { Outlet } from 'react-router-dom';
 
 function App() {
-  const [count, setCount] = useState(0)
-  console.log("Index loaded.")
+	const [quantity, setQuantity] = useState(0);
 
-  return (
-    <div>
-      <Navbar />
-      <Outlet />
-    </div>
-  )
+	const handleSubmit = (event) => {
+		event.preventDefault();
+		console.log(quantity);
+	};
+
+	const decrementQuantity = () => {
+		setQuantity((prevQuantity) => prevQuantity - 1);
+	};
+
+	const incrementQuantity = () => {
+		setQuantity((prevQuantity) => prevQuantity + 1);
+	};
+
+	const contextValue = {
+		decrementQuantity,
+		incrementQuantity,
+		handleSubmit,
+	};
+
+	return (
+		<div>
+			<Navbar quantity={quantity} />
+			<Outlet context={contextValue} />
+		</div>
+	);
 }
 
-export default App
+export default App;
