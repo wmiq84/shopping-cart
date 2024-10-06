@@ -20,7 +20,7 @@ const Shop = () => {
 	console.log(shopData);
 
 	return (
-		<div id="shop-card">
+		<div id="shop-cards">
 			{shopData.map((item) => (
 				<ShopCard
                     key={item.id}
