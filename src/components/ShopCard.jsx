@@ -1,6 +1,6 @@
 import React from 'react';
 
-function ShopCard({item}) {
+function ShopCard({item, handleSubmit, decrementQuality, incrementQuantity}) {
 	return (
 		<div className="shop-card">
 			<img src={item.image} alt={item.name} />
@@ -9,10 +9,10 @@ function ShopCard({item}) {
                 <label htmlFor="quantity">Quantity: </label>
                 <div id="input">
                     <input type="number" id="quantity" name="quantity"></input>
-                    <button type="button">+</button>
-                    <button type="button">-</button>
+                    <button type="button" onClick={decrementQuality}>-</button>
+                    <button type="button" onClick={incrementQuantity}>+</button>
                 </div>
-                <button type="submit">Add To Cart</button>
+                <button type="submit" onClick={handleSubmit}>Add To Cart</button>
             </form>
 		</div>
 	);

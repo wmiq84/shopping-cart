@@ -3,6 +3,7 @@ import ShopCard from './ShopCard.jsx';
 
 const Shop = () => {
 	const [shopData, setShopData] = useState([]);
+    const [quantity, setQuantity] = useState(0);
 
 	useEffect(() => {
 		const fetchShopData = async () => {
@@ -17,7 +18,19 @@ const Shop = () => {
 
 		fetchShopData();
 	}, []);
-	console.log(shopData);
+
+    const handleSubmit = (event) => {
+        event.preventDefault();
+        console.log(quantity);
+    };
+
+    const decrementQuantity = () => {
+        setQuantity(prevQuantity => prevQuantity - 1);
+    };
+
+    const incrementQuantity = () => {
+        setQuantity(prevQuantity => prevQuantity + 1);
+    };
 
 	return (
 		<div id="shop-cards">
@@ -25,6 +38,9 @@ const Shop = () => {
 				<ShopCard
                     key={item.id}
                     item={item}
+                    decrementQuantity={decrementQuantity}
+                    incrementQuantity={incrementQuantity}
+                    handleSubmit={handleSubmit}
                 />
 			))}
 		</div>
