@@ -4,7 +4,7 @@ import { useOutletContext } from 'react-router-dom';
 
 const Shop = () => {
 	const [shopData, setShopData] = useState([]);
-    const { incrementQuantity, decrementQuantity, handleSubmit } = useOutletContext();
+    const { quantity, incrementQuantity, decrementQuantity, handleSubmit } = useOutletContext();
 
 	useEffect(() => {
 		const fetchShopData = async () => {
@@ -26,6 +26,7 @@ const Shop = () => {
 				<ShopCard
 					key={item.id}
 					item={item}
+                    quantity={quantity}
                     decrementQuantity={decrementQuantity}
 					incrementQuantity={incrementQuantity}
 					handleSubmit={handleSubmit}

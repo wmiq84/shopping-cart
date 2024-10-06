@@ -1,6 +1,12 @@
 import React from 'react';
 
-function ShopCard({ item, handleSubmit, decrementQuantity, incrementQuantity }) {
+function ShopCard({
+	item,
+	quantity,
+	decrementQuantity,
+	incrementQuantity,
+	handleSubmit,
+}) {
 	return (
 		<div className="shop-card">
 			<img src={item.image} alt={item.name} />
@@ -8,7 +14,13 @@ function ShopCard({ item, handleSubmit, decrementQuantity, incrementQuantity }) 
 				<h3>{item.title}</h3>
 				<label htmlFor="quantity">Quantity: </label>
 				<div id="input">
-					<input type="number" id="quantity" name="quantity"></input>
+					<input
+						type="number"
+						id="quantity"
+						name="quantity"
+						value={quantity}
+						readOnly
+					></input>
 					<button type="button" onClick={decrementQuantity}>
 						-
 					</button>

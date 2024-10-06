@@ -20,6 +20,7 @@ function App() {
 	};
 
 	const contextValue = {
+    quantity,
 		decrementQuantity,
 		incrementQuantity,
 		handleSubmit,
